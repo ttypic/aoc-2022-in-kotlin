@@ -30,6 +30,10 @@ fun <T> Sequence<T>.splitBy(predicate: (T) -> Boolean): Sequence<Sequence<T>> {
     }
 }
 
+fun <T> List<T>.splitBy(predicate: (T) -> Boolean): List<List<T>> {
+    return this.asSequence().splitBy(predicate).map { it.toList() }.toList()
+}
+
 fun <T : Comparable<T>> Sequence<T>.top(n: Int): List<T> {
     val topN = mutableListOf<T>()
     val iterator = iterator()
