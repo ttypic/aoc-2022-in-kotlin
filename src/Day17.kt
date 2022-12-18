@@ -1,5 +1,3 @@
-import kotlin.experimental.and
-
 fun main() {
 
     fun printField(field: List<Int>) {
@@ -116,11 +114,11 @@ enum class Rock(val width: Int, val height: Int) {
 fun Rock.canFall(field: List<Int>, left: Int, bottom: Int): Boolean {
     if (bottom < 0) return false
     return when(this) {
-        Rock.first -> field[bottom][left] == 0 && field[bottom][left + 1] == 0 && field[bottom][left + 2] == 0 && field[bottom][left + 3] == 0
-        Rock.second -> field[bottom + 1][left] == 0 && field[bottom + 1][left + 1] == 0 && field[bottom + 1][left + 2] == 0 && field[bottom][left + 1] == 0 && field[bottom + 2][left + 1] == 0
-        Rock.third -> field[bottom][left] == 0 && field[bottom][left + 1] == 0 && field[bottom][left + 2] == 0 && field[bottom + 1][left + 2] == 0 && field[bottom + 2][left + 2] == 0
-        Rock.fourth -> field[bottom][left] == 0 && field[bottom + 1][left] == 0 && field[bottom + 2][left] == 0 && field[bottom + 3][left] == 0
-        Rock.fifth -> field[bottom][left] == 0 && field[bottom][left + 1] == 0 && field[bottom + 1][left] == 0 && field[bottom + 1][left + 1] == 0
+        Rock.first -> field[bottom][left] or field[bottom][left + 1] or field[bottom][left + 2] or field[bottom][left + 3] == 0
+        Rock.second -> field[bottom + 1][left] or field[bottom + 1][left + 1] or field[bottom + 1][left + 2] or field[bottom][left + 1] or field[bottom + 2][left + 1] == 0
+        Rock.third -> field[bottom][left] or field[bottom][left + 1] or field[bottom][left + 2] or field[bottom + 1][left + 2] or field[bottom + 2][left + 2] == 0
+        Rock.fourth -> field[bottom][left] or field[bottom + 1][left] or field[bottom + 2][left] or field[bottom + 3][left] == 0
+        Rock.fifth -> field[bottom][left] or field[bottom][left + 1] or field[bottom + 1][left] or field[bottom + 1][left + 1] == 0
     }
 }
 
@@ -135,27 +133,27 @@ fun Rock.move(direction: Char, field: List<Int>, left: Int, bottom: Int): Int {
 fun Rock.settle(field: MutableList<Int>, left: Int, bottom: Int) {
     when(this) {
         Rock.first -> {
-            field[bottom] += "1111".toInt(2) shl (3 - left)
+            field[bottom] += 0b1111 shl (3 - left)
         }
         Rock.second -> {
-            field[bottom + 2] += "010".toInt(2) shl (4 - left)
-            field[bottom + 1] += "111".toInt(2) shl (4 - left)
-            field[bottom] += "010".toInt(2) shl (4 - left)
+            field[bottom + 2] += 0b010 shl (4 - left)
+            field[bottom + 1] += 0b111 shl (4 - left)
+            field[bottom] += 0b010 shl (4 - left)
         }
         Rock.third -> {
-            field[bottom + 2] += "001".toInt(2) shl (4 - left)
-            field[bottom + 1] += "001".toInt(2) shl (4 - left)
-            field[bottom] += "111".toInt(2) shl (4 - left)
+            field[bottom + 2] += 0b001 shl (4 - left)
+            field[bottom + 1] += 0b001 shl (4 - left)
+            field[bottom] += 0b111 shl (4 - left)
         }
         Rock.fourth -> {
-            field[bottom + 3] += "1".toInt(2) shl (6 - left)
-            field[bottom + 2] += "1".toInt(2) shl (6 - left)
-            field[bottom + 1] += "1".toInt(2) shl (6 - left)
-            field[bottom] += "1".toInt(2) shl (6 - left)
+            field[bottom + 3] += 1 shl (6 - left)
+            field[bottom + 2] += 1 shl (6 - left)
+            field[bottom + 1] += 1 shl (6 - left)
+            field[bottom] += 1 shl (6 - left)
         }
         Rock.fifth -> {
-            field[bottom + 1] += "11".toInt(2) shl (5 - left)
-            field[bottom] += "11".toInt(2) shl (5 - left)
+            field[bottom + 1] += 0b11 shl (5 - left)
+            field[bottom] += 0b11 shl (5 - left)
         }
     }
 }
