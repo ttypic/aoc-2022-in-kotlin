@@ -52,5 +52,3 @@ fun main() {
     println(part1(input))
     println(part2(input))
 }
-
-data class IndexedCoord(val index: Int, val coord: Int)
