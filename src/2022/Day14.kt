@@ -1,3 +1,7 @@
+package `2022`
+
+import readInput
+
 fun main() {
     val startY = 0
     val startX = 500

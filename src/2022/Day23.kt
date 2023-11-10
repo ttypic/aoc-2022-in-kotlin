@@ -1,3 +1,7 @@
+package `2022`
+
+import readInput
+
 fun main() {
 
     fun processRound(elfPositions: Set<Point>, directions: List<Direction>): Set<Point> {

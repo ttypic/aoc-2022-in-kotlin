@@ -1,3 +1,7 @@
+package `2022`
+
+import readInput
+
 fun main() {
 
     fun mixing(coordinates: List<Long>, items: MutableList<IndexedValue<Long>>, iterations: Int) {

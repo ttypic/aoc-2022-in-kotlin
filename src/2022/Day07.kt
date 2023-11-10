@@ -1,3 +1,7 @@
+package `2022`
+
+import readInput
+
 fun main() {
 
     fun readFileSystem(input: List<String>): Directory {
@@ -77,7 +81,8 @@ interface Path {
     val size: Int
 }
 
-class Directory(override val parent: Directory? = null, override val name: String, val children: MutableList<Path>): Path {
+class Directory(override val parent: Directory? = null, override val name: String, val children: MutableList<Path>):
+    Path {
     override val size: Int
         get() = children.sumOf { it.size }
 }

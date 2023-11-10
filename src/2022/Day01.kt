@@ -1,3 +1,9 @@
+package `2022`
+
+import readInput
+import splitBy
+import topThree
+
 fun main() {
 
     fun getElfCalories(input: List<String>): Sequence<Int> {

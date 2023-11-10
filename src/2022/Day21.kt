@@ -1,3 +1,7 @@
+package `2022`
+
+import readInput
+
 fun main() {
 
     fun calculate(phrase: MonkeyPhrase, nameToResult: MutableMap<String, Long>, nameToPhrase: Map<String, MonkeyPhrase>): Long {
@@ -60,7 +64,9 @@ fun main() {
         val rootMonkey = nameToPhrase["root"]!! as MonkeyPhrase.Operation
         val firstOperand = nameToPhrase[rootMonkey.firstOperand]!!
         val secondOperand = nameToPhrase[rootMonkey.secondOperand]!!
-        val nameToResult: MutableMap<String, MonkeyOperationResult> = phrases.filterIsInstance<MonkeyPhrase.Num>().associateBy { it.name }.mapValues { MonkeyOperationResult.Num(Rational(it.value.value)) }.toMutableMap()
+        val nameToResult: MutableMap<String, MonkeyOperationResult> = phrases.filterIsInstance<MonkeyPhrase.Num>().associateBy { it.name }.mapValues {
+            MonkeyOperationResult.Num(Rational(it.value.value))
+        }.toMutableMap()
         nameToResult["humn"] = MonkeyOperationResult.X(Rational(0L), Rational(1L))
         val firstResult = reverseCalculate(firstOperand, nameToResult, nameToPhrase).toX()
         val secondResult = reverseCalculate(secondOperand, nameToResult, nameToPhrase).toX()

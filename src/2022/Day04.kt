@@ -1,3 +1,7 @@
+package `2022`
+
+import readInput
+
 fun main() {
 
     fun String.toRange(): ClosedRange<Int> {

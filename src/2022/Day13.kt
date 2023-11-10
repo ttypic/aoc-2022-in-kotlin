@@ -1,3 +1,8 @@
+package `2022`
+
+import readInput
+import splitBy
+
 fun main() {
 
     fun part1(input: List<String>): Int {

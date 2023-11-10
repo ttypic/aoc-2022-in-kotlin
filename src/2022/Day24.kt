@@ -1,3 +1,7 @@
+package `2022`
+
+import readInput
+
 fun main() {
     fun part1(input: List<String>): Int {
         return Maze.readMaze(input).solve()

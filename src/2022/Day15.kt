@@ -1,3 +1,6 @@
+package `2022`
+
+import readInput
 import kotlin.math.abs
 
 fun main() {
